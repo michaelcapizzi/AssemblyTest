@@ -1899,7 +1899,7 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.8!apply-macro.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.4!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 1385ms :: artifacts dl 71ms
+[debug] :: resolution report :: resolve 1751ms :: artifacts dl 61ms
 [debug] 	report for default#assemblytest-build;0.1-SNAPSHOT compile produced in /media/mcapizzi/data/Github/AssemblyTest/project/target/resolution-cache/reports/default-assemblytest-build-compile.xml
 [debug] 	report for default#assemblytest-build;0.1-SNAPSHOT runtime produced in /media/mcapizzi/data/Github/AssemblyTest/project/target/resolution-cache/reports/default-assemblytest-build-runtime.xml
 [debug] 	report for default#assemblytest-build;0.1-SNAPSHOT test produced in /media/mcapizzi/data/Github/AssemblyTest/project/target/resolution-cache/reports/default-assemblytest-build-test.xml
@@ -1913,5 +1913,5 @@
 [debug] 	report for default#assemblytest-build;0.1-SNAPSHOT docs produced in /media/mcapizzi/data/Github/AssemblyTest/project/target/resolution-cache/reports/default-assemblytest-build-docs.xml
 [debug] 	report for default#assemblytest-build;0.1-SNAPSHOT pom produced in /media/mcapizzi/data/Github/AssemblyTest/project/target/resolution-cache/reports/default-assemblytest-build-pom.xml
 [debug] 	report for default#assemblytest-build;0.1-SNAPSHOT scala-tool produced in /media/mcapizzi/data/Github/AssemblyTest/project/target/resolution-cache/reports/default-assemblytest-build-scala-tool.xml
-[debug] 	resolve done (1385ms resolve - 71ms download)
+[debug] 	resolve done (1751ms resolve - 61ms download)
 [info] Done updating.
