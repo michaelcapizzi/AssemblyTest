@@ -10,7 +10,7 @@ scalaVersion := "2.11.7"
 
 ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }      //this overrides competing scala versions?  ???
 
-assemblyJarName in assembly := "testWithProcessorswithCommonsMath.jar"
+assemblyJarName in assembly := "testWithProcessorswithCommonsMathwithBreeze.jar"
 
 //test in assembly := {}
 
@@ -32,7 +32,13 @@ assemblyMergeStrategy in assembly := {
 }
 
 libraryDependencies ++= Seq(
-  "edu.arizona.sista" % "processors_2.11" % "5.5",        //NLP         //required exclude java-cup-0.11a.jar
+  "edu.arizona.sista" % "processors_2.11" % "5.5",       //required exclude java-cup-0.11a.jar
   "edu.arizona.sista" % "processors_2.11" % "5.5" classifier "models",
-  "org.apache.commons" % "commons-math3" % "3.3"
+  "org.apache.commons" % "commons-math3" % "3.3",
+  "org.scalanlp" % "breeze-natives_2.11" % "0.11.2",
+  "org.scalanlp" % "breeze_2.11" % "0.11.2",
+  "org.scalanlp" %% "breeze-viz" % "0.11.2",
+  "org.scalanlp" % "nak_2.11" % "1.3",
+  "com.github.fommil.netlib" % "all" % "1.1.2",
+  "com.github.fommil.netlib" % "native_ref" % "1.1"
 )
