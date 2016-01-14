@@ -1,5 +1,4 @@
 import _root_.sbtassembly.AssemblyPlugin.autoImport._
-//import sbtassembly.AssemblyPlugin.autoImport.MergeStrategy
 import sbtassembly.MergeStrategy
 
 name := "AssemblyTest"
