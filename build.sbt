@@ -9,12 +9,13 @@ scalaVersion := "2.11.7"
 
 ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }      //this overrides competing scala versions?  ???
 
-assemblyJarName in assembly := "testWithProcessorswithCommonsMathwithBreezewithTikawithJSON4S.jar"
+assemblyJarName in assembly := "testResources.jar"
 
 //test in assembly := {}
 
 mainClass in assembly := Some("Test.Main")
 
+/*
 assemblyExcludedJars in assembly := {
   val cp = (fullClasspath in assembly).value
   cp filter {_.data.getName == "java-cup-0.11a.jar"}
@@ -46,3 +47,4 @@ libraryDependencies ++= Seq(
   "org.json4s" % "json4s-native_2.11" % "3.3.0",
   "org.json4s" % "json4s-jackson_2.11" % "3.3.0"
 )
+*/
