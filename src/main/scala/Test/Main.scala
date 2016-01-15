@@ -2,6 +2,7 @@ package Test
 
 import java.io.File
 import java.nio.file.FileSystems
+import java.security.CodeSource
 import java.util.Collections
 import java.util.jar.{JarEntry, JarFile}
 import java.util.zip.ZipInputStream
@@ -12,12 +13,6 @@ import java.util.zip.ZipInputStream
 object Main {
   def main(args: Array[String]) = {
     println("This works.")
-
-    //don't work
-    /*val resources = getClass.getResource("resources/").getPath
-
-    val dir1 = getClass.getResource("resources/dir/").getPath
-    val dir2 = getClass.getResource("resources/dir2/").getPath*/
 
     val dir1 = getClass.getResource("/dir/")
 
@@ -30,35 +25,31 @@ object Main {
 
     //prints a given resource
     val samp1 = scala.io.Source.fromInputStream(getClass.getResourceAsStream("/dir/sample1.txt")).getLines.mkString
+    val samp2 = scala.io.Source.fromInputStream(getClass.getResourceAsStream("/dir/sample2.txt")).getLines.mkString
     println(samp1)
+    println(samp2)
 
-    //something to do with JarFile
-    //just lists nonsense classes to me
-    /*val dir1Path = dir1.getPath.substring(5, dir1.getPath.indexOf("!"))
-
-    val dir1Jar = new JarFile(dir1Path)
-
-    val dir1Entries = dir1Jar.entries()
-    while (dir1Entries.hasMoreElements) {
-      val entry = new JarEntry(dir1Entries.nextElement)
-      val name = entry.getName
-      println("This entry is called: " + name)
-    }*/
-
-    //doesn't work
-    /*val dir1ZipInputStream = new ZipInputStream(dir1.openStream)
-
-    while (true) {
-      val entry = dir1ZipInputStream.getNextEntry
-      val name = entry.getName
-      println("This is inside dir: " + name)
-    }
-*/
 
     //TODO use this - the answer is in here somewhere!
     //http://stackoverflow.com/questions/1429172/how-do-i-list-the-files-inside-a-jar-file
 
+    //this works!
+    val src = getClass.getProtectionDomain.getCodeSource
+    val jar = src.getLocation
+    val zip = new ZipInputStream(jar.openStream())
+    var ne = zip.getNextEntry
+    while (ne != null) {
+      val name = ne.getName
+      if (name.contains("dir") && name.contains("sample")) {
+        println("The found file is " + name)
+        val item = scala.io.Source.fromInputStream(getClass.getResourceAsStream("/" + name)).getLines.mkString
+        println("The content is " + item)
+      }
+      ne = zip.getNextEntry
+    }
+
+
+
 
   }
-
 }
