@@ -40,7 +40,7 @@ object Main {
     var ne = zip.getNextEntry
     while (ne != null) {
       val name = ne.getName
-      if (name.contains("dir") && name.contains("sample")) {
+      if (name.contains("sample") && name.endsWith(".txt")) {
         println("The found file is " + name)
         val item = scala.io.Source.fromInputStream(getClass.getResourceAsStream("/" + name)).getLines.mkString
         println("The content is " + item)
