@@ -1,7 +1,7 @@
 package Test
 
-import java.io.File
-import java.nio.file.FileSystems
+import java.io.{PrintWriter, File}
+import java.nio.file.{Paths, Path, FileSystems}
 import java.security.CodeSource
 import java.util.Collections
 import java.util.jar.{JarEntry, JarFile}
@@ -29,8 +29,7 @@ object Main {
     println(samp1)
     println(samp2)
 
-
-    //TODO use this - the answer is in here somewhere!
+    /*//finding the files when in a .jar
     //http://stackoverflow.com/questions/1429172/how-do-i-list-the-files-inside-a-jar-file
 
     //this works!
@@ -48,8 +47,39 @@ object Main {
       ne = zip.getNextEntry
     }
 
+    val uri = getClass.getResource("/resources").toURI
+    println(uri)*/
 
+    //make temp dir for data to collect
+    println("making temp directory")
+    val tempDir = new File("/tmp/Pitch/")
+    tempDir.mkdir
+
+    val transSource = new File("/tmp/Pitch/transcription.txt")
+//    val transTarget = new File("/home/mcapizzi/Desktop/Pitch/transcription.txt")
+
+    val pw = new PrintWriter(transSource)
+    pw.println("This is a test.")
+    pw.close
+
+    //TODO gz the tmp folder and move to Desktop
+    //for now, move directory with transcription and feedback to Desktop
+
+    //convert to JDK 7 Path
+    val transPathSource = Paths.get("/tmp/Pitch/transcription.txt")
+//    val feedbackPathSource = Paths.get("/tmp/Pitch/feedback.txt")
+
+    val transPathTarget = Paths.get("/home/mcapizzi/Desktop/transcription.txt")
+//    val feedbackPathTarget = Paths.get("/home/mcapizzi/Desktop/Pitch/feedback.txt")
+
+    //move to Desktop
+    java.nio.file.Files.move(transPathSource, transPathTarget)
+//    java.nio.file.Files.move(feedbackPathSource, feedbackPathTarget)
+
+    //deleting temp
+    tempDir.delete
 
 
   }
+
 }
